@@ -407,7 +407,9 @@ export class UserService {
 
   async findAllUser() {
     try {
-      return await this.userRepository.find();
+      return await this.userRepository.findBy({
+        emailVerified: true,
+      });
     } catch (e) {
       throw new HttpException(e.response, e.status);
     }
